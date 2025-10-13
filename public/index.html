@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recall Trading Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Recall — Trading Dashboard</h1>
+      <nav>
+        <button id="tab-trade" class="active">Manual Trade</button>
+        <button id="tab-portfolio">Portfolio</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="trade-section" class="panel">
+        <form id="trade-form">
+          <div class="row">
+            <label>From Chain Type</label>
+            <select id="fromChain">
+              <option value="evm">EVM</option>
+              <option value="svm">SVM</option>
+            </select>
+            <label>From Specific</label>
+            <select id="fromSpecific">
+              <option value="eth">Ethereum</option>
+              <option value="sol">Solana</option>
+              <option value="base">Base</option>
+              <option value="bnb">BNB</option>
+              <option value="btc">Bitcoin</option>
+              <option value="arbitrum">Arbitrum</option>
+              <option value="polygon">Polygon</option>
+              <option value="avalanche">Avalanche</option>
+              <option value="fantom">Fantom</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label>To Chain Type</label>
+            <select id="toChain">
+              <option value="evm">EVM</option>
+              <option value="svm">SVM</option>
+            </select>
+            <label>To Specific</label>
+            <select id="toSpecific">
+              <option value="eth">Ethereum</option>
+              <option value="sol">Solana</option>
+              <option value="base">Base</option>
+              <option value="bnb">BNB</option>
+              <option value="btc">Bitcoin</option>
+              <option value="arbitrum">Arbitrum</option>
+              <option value="polygon">Polygon</option>
+              <option value="avalanche">Avalanche</option>
+              <option value="fantom">Fantom</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label>Choose</label>
+            <select id="chooseAction">
+              <option value="buy">Buy</option>
+              <option value="sell">Sell</option>
+            </select>
+
+            <label><input type="checkbox" id="isBridge" /> Use Bridge</label>
+          </div>
+
+          <div class="row">
+            <label>From Token (address or symbol)</label>
+            <input id="fromToken" placeholder="e.g. USDC or 0x..." />
+            <label>To Token (address or symbol)</label>
+            <input id="toToken" placeholder="e.g. ETH or 0x..." />
+          </div>
+
+          <div class="row">
+            <label>Amount</label>
+            <input id="amount" type="number" step="any" required />
+            <label>Slippage (%)</label>
+            <input id="slippage" type="number" step="any" placeholder="0.5" />
+          </div>
+
+          <div class="row">
+            <label>Reason</label>
+            <input id="reason" placeholder="Reason for trade" />
+          </div>
+
+          <div class="actions">
+            <button type="submit">Execute Trade</button>
+            <button type="button" id="clear-form">Clear</button>
+          </div>
+
+          <pre id="trade-result" class="result"></pre>
+        </form>
+      </section>
+
+      <section id="portfolio-section" class="panel hidden">
+        <div class="panel-header">
+          <h2>Portfolio</h2>
+          <button id="refresh-portfolio">Refresh</button>
+        </div>
+        <div id="portfolio-content">
+          <p class="muted">Press Refresh to load portfolio from Recall.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
